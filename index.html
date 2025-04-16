@@ -2,211 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>To Swabrah 💖</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-image: url('Flo.jpeg'); /* Replace */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      min-height: 100vh;
-      backdrop-filter: blur(4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-
-    .message-card {
-      background: rgba(255, 255, 255, 0.2);
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: url('Flo1.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .backdrop-card {
+      backdrop-filter: blur(12px) brightness(0.9);
+      background-color: rgba(255, 255, 255, 0.15);
       border-radius: 20px;
       padding: 2rem;
-      max-width: 600px;
+      max-width: 90%;
+      margin: 5rem auto 2rem;
       text-align: center;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      color: #e4d4d4;
-      z-index: 2;
-      animation: heartbeat 2s infinite, fadeInUp 1.5s ease forwards;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease;
     }
-
-    .message-card h1 {
-      font-size: 2.5rem;
+    .backdrop-card h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #ffedf4;
       margin-bottom: 1rem;
-      color: #e7dfdf;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
     }
-
-    .message-card p {
+    .backdrop-card p {
       font-size: 1.2rem;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
+      color: #fefefe;
     }
-
-    .rounded-image {
-      width: 80px;
-      height: 80px;
+    .swabrah-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 20px;
+      object-fit: cover;
+      margin: 1.5rem auto 0;
+      display: block;
+      border: 4px solid white;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+    .my-image {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid #fff;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
-      animation: popIn 1.5s ease-out;
+      border: 2px solid white;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
-
-    .swabrah-img {
-      position: absolute;
-      bottom: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0.1;
-      width: 100%;
-      max-width: 300px;
-      z-index: 1;
-      animation: fadeIn 6s ease-in-out infinite alternate;
-    }
-
-    .heart {
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      background: pink;
-      transform: rotate(45deg);
-      animation: floatHeart 8s linear infinite;
-    }
-
-    .heart::before,
-    .heart::after {
-      content: "";
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      background: pink;
-      border-radius: 50%;
-    }
-
-    .heart::before {
-      top: -7.5px;
-      left: 0;
-    }
-
-    .heart::after {
-      top: 0;
-      left: -7.5px;
-    }
-
-    @keyframes floatHeart {
-      0% {
-        transform: translateY(100vh) scale(1) rotate(45deg);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-20vh) scale(1.5) rotate(45deg);
-        opacity: 0;
-      }
-    }
-
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0.1; }
-      to { opacity: 0.2; }
-    }
-
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      25% { transform: scale(1.03); }
-      50% { transform: scale(1); }
-      75% { transform: scale(1.03); }
-    }
-
     footer {
-      position: absolute;
-      bottom: 10px;
+      position: relative;
+      text-align: center;
       font-size: 0.9rem;
-      color: #eee;
-      z-index: 3;
+      color: #ddd;
+      margin-bottom: 1rem;
     }
-
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     @media (max-width: 600px) {
-      .message-card {
-        padding: 1.5rem;
+      .backdrop-card h1 {
+        font-size: 2.3rem;
       }
-
-      .message-card h1 {
-        font-size: 2rem;
+      .swabrah-image {
+        width: 130px;
+        height: 130px;
       }
-
-      .message-card p {
-        font-size: 1rem;
+      .my-image {
+        width: 50px;
+        height: 50px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Soft Background Music -->
-  <audio autoplay loop hidden>
-    <source src="love.mp3" type="audio/mp3">
+  <audio autoplay loop>
+    <source src="love.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
 
-  <!-- Confetti on Load -->
-  <script>
-    window.onload = () => {
-      confetti({
-        particleCount: 150,
-        spread: 100,
-        origin: { y: 0.6 },
-      });
-
-      // create floating hearts
-      for (let i = 0; i < 20; i++) {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = 4 + Math.random() * 6 + "s";
-        document.body.appendChild(heart);
-      }
-    };
-  </script>
-
-  <!-- Optional: Your Image (Tendo) -->
-  <img src="t1.png" alt="Tendo" class="rounded-image" />
-
-  <div class="message-card animate__animated animate__fadeInUp">
-    <h1>Dear Swabrah, 💌</h1>
+  <div class="backdrop-card">
+    <h1>Dear Swabrah 💕</h1>
     <p>
-      Thank you for being such an amazing friend. Your kindness, your smile, your presence—
-      it means more than you know. I pray that this beautiful connection we share only grows stronger,
-      and maybe, just maybe, into something even more special. 💫
+      Thank you for being such a sweet and genuine friend. Your kindness and smile light up my days.
+      I pray that our bond continues to grow into something even more beautiful. You mean a lot to me. 💖
     </p>
-    <p>With all my gratitude and hope,</p>
-    <p>— Tendo ❤️</p>
+    <img src="Swb.png" alt="Swabrah" class="swabrah-image">
   </div>
 
-  <!-- Fading Swabrah Image -->
-  <img src="Swb.png" alt="Swabrah" class="swabrah-img" />
+  <img src="t1.png" alt="Tendo" class="my-image">
 
-  <footer>Crafted with heart, just for you 💕</footer>
+  <footer>
+    Created with all my heart by Tendo 💘
+  </footer>
 
 </body>
 </html>
