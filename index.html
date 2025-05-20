@@ -3,236 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>To Swabrah 💖</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+  <title>Dear Barbra 💖</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
     body {
-      font-family: 'Outfit', sans-serif;
-      background: url('Flo1.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      color: #030202;
-      position: relative;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-    .backdrop-card {
-      backdrop-filter: blur(12px) brightness(0.9);
-      background-color: rgba(222, 172, 198, 0.853);
-      border-radius: 20px;
-      padding: 2rem;
-      max-width: 90%;
-      margin: 5rem auto 2rem;
+      background: linear-gradient(to bottom right, #320043, #000000);
+      color: #ffe6f2;
       text-align: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      animation: fadeIn 1.5s ease;
+      padding: 50px 20px;
+      overflow-x: hidden;
+      position: relative;
     }
-    .backdrop-card h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      color: #000000;
-      margin-bottom: 1rem;
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 30px;
+      animation: fadeInDown 0.3s ease-out forwards;
+      color: #ffb3d1;
     }
-    .backdrop-card p {
-      font-size: 1.2rem;
-      color: #050303;
+
+    .messages {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .swabrah-image {
-      width: 180px;
-      height: 180px;
-      border-radius: 20px;
-      object-fit: cover;
-      margin: 1.5rem auto 0;
-      display: block;
-      border: 4px solid white;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+
+    .message {
+      font-size: 1.3rem;
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-left: 4px solid #ffb3d1;
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 18px rgba(255, 182, 193, 0.25);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: popIn 0.6s forwards;
     }
-    .my-image {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid white;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      z-index: 2;
+
+    .messages .message:nth-child(1) { animation-delay: 0.2s; }
+    .messages .message:nth-child(2) { animation-delay: 0.4s; }
+    .messages .message:nth-child(3) { animation-delay: 0.6s; }
+    .messages .message:nth-child(4) { animation-delay: 0.8s; }
+    .messages .message:nth-child(5) { animation-delay: 1s; }
+    .messages .message:nth-child(6) { animation-delay: 1.2s; }
+    .messages .message:nth-child(7) { animation-delay: 1.4s; }
+    .messages .message:nth-child(8) { animation-delay: 1.6s; }
+    .messages .message:nth-child(9) { animation-delay: 1.8s; }
+    .messages .message:nth-child(10) { animation-delay: 2s; }
+
+    @keyframes popIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .hearts {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 1;
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-60px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
-    .heart {
+
+    .heart, .flower {
       position: absolute;
+      transform: rotate(45deg);
+      z-index: 0;
+    }
+
+    .heart {
+      background: pink;
       width: 20px;
       height: 20px;
-      background-color: pink;
-      transform: rotate(45deg);
-      animation: floatUp 6s linear infinite;
+      animation: float 8s infinite ease-in;
     }
+
     .heart::before,
     .heart::after {
-      content: "";
+      content: '';
       position: absolute;
       width: 20px;
       height: 20px;
-      background-color: pink;
+      background: pink;
       border-radius: 50%;
     }
-    .heart::before {
-      top: -10px;
-      left: 0;
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: -10px; top: 0; }
+
+    .flower {
+      background-image: url('https://cdn-icons-png.flaticon.com/512/415/415733.png');
+      background-size: cover;
+      border-radius: 50%;
     }
-    .heart::after {
-      left: -10px;
-      top: 0;
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-600px) rotate(45deg); opacity: 0; }
     }
-    @keyframes floatUp {
-      0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
-      100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
-    }
-    footer {
-      position: relative;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #000000;
-      margin-bottom: 1rem;
-      z-index: 2;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .surprise-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 0.7rem 1.2rem;
-      border: none;
-      background-color: #ff7eb3;
-      color: rgb(255, 253, 253);
+
+    .footer {
+      margin-top: 40px;
+      font-style: italic;
       font-size: 1rem;
-      border-radius: 30px;
-      box-shadow: 0 4px 15px rgba(255,126,179,0.4);
-      cursor: pointer;
-      z-index: 3;
-      animation: fadeIn 2s ease;
+      opacity: 0.9;
+      color: #ffcce0;
     }
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      background-color: rgba(255, 255, 255, 0.95);
-      color: #000000;
-      padding: 2rem;
-      border-radius: 15px;
-      text-align: center;
-      z-index: 999;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      transition: transform 0.4s ease;
-    }
-    .popup.show {
-      transform: translate(-50%, -50%) scale(1);
-    }
-    .popup h2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.5rem;
-      color: #ff65a3;
-      margin-bottom: 1rem;
-    }
-    .popup p {
-      font-size: 1.1rem;
-    }
-    .close-popup {
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #fb6f92;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      cursor: pointer;
-    }
+
     @media (max-width: 600px) {
-      .backdrop-card h1 {
-        font-size: 2.3rem;
-      }
-      .swabrah-image {
-        width: 130px;
-        height: 130px;
-      }
-      .my-image {
-        width: 50px;
-        height: 50px;
-      }
+      h1 { font-size: 2rem; }
+      .message { font-size: 1.1rem; padding: 15px; }
     }
   </style>
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="love.mp3" type="audio/mpeg">
-  </audio>
+  <h1>To the most beautiful soul I know, Barbra 💗</h1>
 
-  <div class="hearts"></div>
-
-  <button class="surprise-btn" onclick="showSurprise()">💝 Surprise</button>
-
-  <div class="popup" id="popup">
-    <h2>You're So Special, Swabrah 💞</h2>
-    <p>
-      Just wanted to remind you how much you mean to me.
-      You bring beauty and light wherever you go.
-      Here's to us and to a future filled with love and laughter! 💗
-    </p>
-    <button class="close-popup" onclick="hideSurprise()">Close</button>
+  <div class="messages">
+    <div class="message">🌟 You light up every room you walk into, Barbra. And my heart too.</div>
+    <div class="message">💖 Every moment I think of you feels like the universe paused just for us.</div>
+    <div class="message">🕊️ You're not just beautiful outside, you're a masterpiece within.</div>
+    <div class="message">✨ I didn’t believe in magic—until I met you.</div>
+    <div class="message">🌙 If I could give you one thing, it’d be the ability to see yourself through my eyes.</div>
+    <div class="message">💫 You make my heart feel things I didn’t think it was capable of.</div>
+    <div class="message">💐 Even flowers envy your grace and presence.</div>
+    <div class="message">🎶 Your name is my favorite melody.</div>
+    <div class="message">❤️ Just thinking of you brings calm to my storms.</div>
+    <div class="message">🌈 I hope one day you realize just how much brightness you bring into ma.</div>
   </div>
 
-  <div class="backdrop-card">
-    <h1>Dear Swabrah 💕</h1>
-    <p>
-      Thank you for being such a sweet and genuine friend. Your kindness and smile light up my days.
-      I pray that our bond continues to grow into something even more beautiful. You mean a lot to me. 💖
-    </p>
-    <img src="Swb.png" alt="Swabrah" class="swabrah-image">
-  </div>
-
-  <img src="t1.png" alt="Tendo" class="my-image">
-
-  <footer>
-    Created with all my heart by Tendo 💘
-  </footer>
+  <div class="footer">With love, from Tendo 💌</div>
 
   <script>
-    const heartContainer = document.querySelector('.hearts');
-    for (let i = 0; i < 40; i++) {
+    function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart');
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDelay = Math.random() * 5 + 's';
-      heart.style.backgroundColor = ['#ff7eb3', '#ff65a3', '#fb6f92', '#ffc2d1'][Math.floor(Math.random() * 4)];
-      heartContainer.appendChild(heart);
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
     }
 
-    function showSurprise() {
-      document.getElementById('popup').classList.add('show');
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.classList.add('flower');
+      flower.style.left = Math.random() * 100 + 'vw';
+      const size = 20 + Math.random() * 20;
+      flower.style.width = flower.style.height = size + 'px';
+      flower.style.animationDuration = (4 + Math.random() * 6) + 's';
+      document.body.appendChild(flower);
+      setTimeout(() => flower.remove(), 10000);
     }
 
-    function hideSurprise() {
-      document.getElementById('popup').classList.remove('show');
-    }
+    setInterval(createHeart, 400);
+    setInterval(createFlower, 600);
   </script>
 </body>
 </html>
