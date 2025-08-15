@@ -1,169 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dear Barbra 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Business Club</title>
   <style>
-    * {
+    body {
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background: linear-gradient(to bottom right, #320043, #000000);
-      color: #ffe6f2;
-      text-align: center;
-      padding: 50px 20px;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 30px;
-      animation: fadeInDown 0.3s ease-out forwards;
-      color: #ffb3d1;
-    }
-
-    .messages {
+      background: linear-gradient(135deg, #0b3d91, #0f7bbd);
+      color: white;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
+      height: 100vh;
     }
-
-    .message {
-      font-size: 1.3rem;
-      margin: 20px auto;
-      max-width: 600px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border-left: 4px solid #ffb3d1;
+    .container {
+      background: rgba(0,0,0,0.75);
+      padding: 30px;
       border-radius: 12px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 18px rgba(255, 182, 193, 0.25);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: popIn 0.6s forwards;
+      width: 350px;
+      text-align: center;
     }
-
-    .messages .message:nth-child(1) { animation-delay: 0.2s; }
-    .messages .message:nth-child(2) { animation-delay: 0.4s; }
-    .messages .message:nth-child(3) { animation-delay: 0.6s; }
-    .messages .message:nth-child(4) { animation-delay: 0.8s; }
-    .messages .message:nth-child(5) { animation-delay: 1s; }
-    .messages .message:nth-child(6) { animation-delay: 1.2s; }
-    .messages .message:nth-child(7) { animation-delay: 1.4s; }
-    .messages .message:nth-child(8) { animation-delay: 1.6s; }
-    .messages .message:nth-child(9) { animation-delay: 1.8s; }
-    .messages .message:nth-child(10) { animation-delay: 2s; }
-
-    @keyframes popIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
     }
-
-    @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-60px); }
-      100% { opacity: 1; transform: translateY(0); }
+    button {
+      width: 95%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      background: #f7b733;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
     }
-
-    .heart, .flower {
-      position: absolute;
-      transform: rotate(45deg);
-      z-index: 0;
-    }
-
-    .heart {
-      background: pink;
-      width: 20px;
-      height: 20px;
-      animation: float 8s infinite ease-in;
-    }
-
-    .heart::before,
-    .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: pink;
-      border-radius: 50%;
-    }
-
-    .heart::before { top: -10px; left: 0; }
-    .heart::after { left: -10px; top: 0; }
-
-    .flower {
-      background-image: url('https://cdn-icons-png.flaticon.com/512/415/415733.png');
-      background-size: cover;
-      border-radius: 50%;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
-      100% { transform: translateY(-600px) rotate(45deg); opacity: 0; }
-    }
-
-    .footer {
-      margin-top: 40px;
-      font-style: italic;
-      font-size: 1rem;
-      opacity: 0.9;
-      color: #ffcce0;
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      .message { font-size: 1.1rem; padding: 15px; }
-    }
+    button:hover { background: #ffcc00; }
+    .msg { margin-top: 10px; font-size: 14px; color: #ffcc00; }
+    #dashboard { display: none; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #333; padding: 8px; text-align: center; }
+    th { background: #f7b733; color: black; }
   </style>
 </head>
 <body>
-  <h1>To the most beautiful soul I know, Barbra 💗</h1>
-
-  <div class="messages">
-    <div class="message">🌟 You light up every room you walk into, Barbra. And my heart too.</div>
-    <div class="message">💖 Every moment I think of you feels like the universe paused just for us.</div>
-    <div class="message">🕊️ You're not just beautiful outside, you're a masterpiece within.</div>
-    <div class="message">✨ I didn’t believe in magic—until I met you.</div>
-    <div class="message">🌙 If I could give you one thing, it’d be the ability to see yourself through my eyes.</div>
-    <div class="message">💫 You make my heart feel things I didn’t think it was capable of.</div>
-    <div class="message">💐 Even flowers envy your grace and presence.</div>
-    <div class="message">🎶 Your name is my favorite melody.</div>
-    <div class="message">❤️ Just thinking of you brings calm to my storms.</div>
-    <div class="message">🌈 I hope one day you realize just how much brightness you bring into ma.</div>
+  <div class="container" id="authSection">
+    <h2>Elite Club Login</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="signup()">Sign Up</button>
+    <button onclick="login()">Login</button>
+    <p class="msg" id="msg"></p>
   </div>
 
-  <div class="footer">With love, from Tendo 💌</div>
+  <div class="container" id="dashboard">
+    <h2>Welcome, <span id="userEmail"></span></h2>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Amount</th></tr>
+      </thead>
+      <tbody id="savingsTable"></tbody>
+    </table>
+    <h3 id="totalSavings">Total: 0</h3>
+    <button onclick="logout()">Logout</button>
+  </div>
 
-  <script>
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 8000);
+  <!-- Firebase SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } 
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, setDoc, doc, collection, addDoc, getDocs, query, where } 
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB8y4y7bMIteIT029Vzna3rgzcDmSjUAwk",
+      authDomain: "elitesign-in.firebaseapp.com",
+      projectId: "elitesign-in",
+      storageBucket: "elitesign-in.firebasestorage.app",
+      messagingSenderId: "404062937521",
+      appId: "1:404062937521:web:4460e2ccc011dd6afa5d90",
+      measurementId: "G-7V5CND9FG4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const authSection = document.getElementById("authSection");
+    const dashboard = document.getElementById("dashboard");
+    const userEmailSpan = document.getElementById("userEmail");
+    const savingsTable = document.getElementById("savingsTable");
+    const totalSavingsEl = document.getElementById("totalSavings");
+    const msgEl = document.getElementById("msg");
+
+    // Sign Up
+    async function signup() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        // Optional: create empty savings record
+        await setDoc(doc(db, "users", user.uid), { email: email });
+        msgEl.innerText = "✅ Sign up successful!";
+      } catch (error) {
+        msgEl.innerText = "❌ " + error.message;
+      }
     }
 
-    function createFlower() {
-      const flower = document.createElement('div');
-      flower.classList.add('flower');
-      flower.style.left = Math.random() * 100 + 'vw';
-      const size = 20 + Math.random() * 20;
-      flower.style.width = flower.style.height = size + 'px';
-      flower.style.animationDuration = (4 + Math.random() * 6) + 's';
-      document.body.appendChild(flower);
-      setTimeout(() => flower.remove(), 10000);
+    // Login
+    async function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+      } catch (error) {
+        msgEl.innerText = "❌ " + error.message;
+      }
     }
 
-    setInterval(createHeart, 400);
-    setInterval(createFlower, 600);
+    // Logout
+    async function logout() {
+      await signOut(auth);
+      dashboard.style.display = "none";
+      authSection.style.display = "block";
+      msgEl.innerText = "Logged out!";
+    }
+
+    // Load savings for logged in user
+    async function loadSavings(uid) {
+      savingsTable.innerHTML = "";
+      let total = 0;
+      const q = query(collection(db, "savings"), where("userId", "==", uid));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach(docSnap => {
+        const data = docSnap.data();
+        savingsTable.innerHTML += `<tr><td>${data.date}</td><td>${data.amount}</td></tr>`;
+        total += data.amount;
+      });
+      totalSavingsEl.innerText = "Total: " + total;
+    }
+
+    // Monitor auth state
+    onAuthStateChanged(auth, user => {
+      if(user){
+        authSection.style.display = "none";
+        dashboard.style.display = "block";
+        userEmailSpan.innerText = user.email;
+        loadSavings(user.uid);
+      } else {
+        authSection.style.display = "block";
+        dashboard.style.display = "none";
+      }
+    });
+
+    window.signup = signup;
+    window.login = login;
+    window.logout = logout;
   </script>
 </body>
 </html>
