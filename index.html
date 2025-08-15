@@ -14,16 +14,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
     }
     .container {
       background: rgba(0,0,0,0.75);
       padding: 30px;
       border-radius: 12px;
-      width: 350px;
+      width: 400px;
       text-align: center;
     }
-    input {
+    input, select {
       width: 90%;
       padding: 10px;
       margin: 10px 0;
@@ -68,7 +68,14 @@
       <tbody id="savingsTable"></tbody>
     </table>
     <h3 id="totalSavings">Total: 0</h3>
+
+    <h3>Add New Saving</h3>
+    <input type="date" id="saveDate" />
+    <input type="number" id="saveAmount" placeholder="Amount" />
+    <button onclick="addSaving()">Add Saving</button>
+
     <button onclick="logout()">Logout</button>
+    <p class="msg" id="dashboardMsg"></p>
   </div>
 
   <!-- Firebase SDKs -->
@@ -99,6 +106,7 @@
     const savingsTable = document.getElementById("savingsTable");
     const totalSavingsEl = document.getElementById("totalSavings");
     const msgEl = document.getElementById("msg");
+    const dashboardMsgEl = document.getElementById("dashboardMsg");
 
     // Sign Up
     async function signup() {
@@ -107,7 +115,7 @@
       try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        // Optional: create empty savings record
+        // Create user document
         await setDoc(doc(db, "users", user.uid), { email: email });
         msgEl.innerText = "✅ Sign up successful!";
       } catch (error) {
@@ -132,9 +140,10 @@
       dashboard.style.display = "none";
       authSection.style.display = "block";
       msgEl.innerText = "Logged out!";
+      dashboardMsgEl.innerText = "";
     }
 
-    // Load savings for logged in user
+    // Load user savings
     async function loadSavings(uid) {
       savingsTable.innerHTML = "";
       let total = 0;
@@ -148,7 +157,24 @@
       totalSavingsEl.innerText = "Total: " + total;
     }
 
-    // Monitor auth state
+    // Add new saving
+    async function addSaving() {
+      const date = document.getElementById("saveDate").value;
+      const amount = Number(document.getElementById("saveAmount").value);
+      const user = auth.currentUser;
+      if (!date || !amount || !user) return dashboardMsgEl.innerText = "❌ Enter date and amount";
+      await addDoc(collection(db, "savings"), {
+        userId: user.uid,
+        date: date,
+        amount: amount
+      });
+      dashboardMsgEl.innerText = "✅ Saving added!";
+      loadSavings(user.uid);
+      document.getElementById("saveDate").value = "";
+      document.getElementById("saveAmount").value = "";
+    }
+
+    // Auth state observer
     onAuthStateChanged(auth, user => {
       if(user){
         authSection.style.display = "none";
@@ -164,6 +190,7 @@
     window.signup = signup;
     window.login = login;
     window.logout = logout;
+    window.addSaving = addSaving;
   </script>
 </body>
 </html>
