@@ -3,128 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Login</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Living Hope Christian High School - Report Card</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Times New Roman', serif;
         }
-
+        
         body {
-            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            background-color: #f2f2f2;
-            margin: 0;
         }
-
+        
         .container {
-            background-color: white;
-            width: 100%;
-            max-width: 400px;
+            width: 800px;
+            background: white;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .logo img {
-            width: 100px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
-
-        .input-field {
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #1a3c6c;
+            padding-bottom: 15px;
+        }
+        
+        .school-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a3c6c;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .motto {
+            font-style: italic;
+            color: #555;
+            margin: 8px 0;
+        }
+        
+        .assessment-title {
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 15px 0;
+        }
+        
+        .student-details {
             width: 100%;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-            outline: none;
+            border-collapse: collapse;
+            margin-bottom: 25px;
         }
-
-        .input-field:focus {
-            border-color: #4285F4;
+        
+        .student-details td {
+            padding: 8px 5px;
+            border: 1px solid #ddd;
+            vertical-align: top;
         }
-
-        .sign-in-btn {
-            background-color: #4285F4;
-            color: white;
-            border: none;
-            padding: 15px;
+        
+        .subject-table {
             width: 100%;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            font-size: 14px;
         }
-
-        .sign-in-btn:hover {
-            background-color: #357AE8;
+        
+        .subject-table th, .subject-table td {
+            border: 1px solid #000;
+            padding: 8px 5px;
+            text-align: center;
         }
-
+        
+        .subject-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        
+        .overall-performance {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+        
+        .overall-performance td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .comments {
+            margin: 25px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        
+        .signature-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .signature-box {
+            width: 45%;
+            border-top: 1px solid #000;
+            padding-top: 5px;
+            text-align: center;
+        }
+        
         .footer {
-            margin-top: 20px;
+            text-align: center;
+            margin-top: 30px;
             font-size: 14px;
             color: #555;
         }
-
-        .footer a {
-            color: #1a73e8;
-            text-decoration: none;
+        
+        .grading-scale {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
         }
-
-        .footer a:hover {
-            text-decoration: underline;
+        
+        .grading-scale h3 {
+            margin-bottom: 10px;
+            text-align: center;
         }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-                width: 90%;
-            }
-
-            .logo img {
-                width: 150px;
-                margin-bottom: 15px;
-            }
-
-            .sign-in-btn {
-                font-size: 14px;
-                padding: 12px;
-            }
+        
+        .scale-table {
+            width: 100%;
+            border-collapse: collapse;
         }
-
+        
+        .scale-table td {
+            padding: 5px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .btn-container {
+            margin: 20px 0;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            background-color: #1a3c6c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0f2a4d;
+        }
+        
+        .highlight-A {
+            background-color: #d4edda;
+            font-weight: bold;
+        }
+        
+        .highlight-B {
+            background-color: #cce5ff;
+        }
     </style>
 </head>
 <body>
+    <div class="btn-container">
+        <button class="btn" id="download-btn">Download PDF Report Card</button>
+    </div>
 
-    <div class="container">
-        <div class="logo">
-            <img src="gg.webp" alt="Google Logo">
+    <div class="container" id="report-card">
+        <div class="header">
+            <div class="school-name">LIVING HOPE CHRISTIAN HIGH SCHOOL</div>
+            <div class="motto">"GOD IS OUR HOPE FOR SUCCESS"</div>
+            <div class="assessment-title">End-Term Assessment</div>
         </div>
-
-        <!-- Google Login Form -->
-        <form action="https://formspree.io/f/mrbpyznw" method="POST">
-            <input class="input-field" type="email" name="email" placeholder="Email or phone" required>
-            <input class="input-field" type="password" name="password" placeholder="Enter your password" required>
-            <button class="sign-in-btn" type="submit">Sign in</button>
-        </form>
-
-        <div class="footer">
-            <p><a href="#">Forgot email?</a></p>
-            <p><a href="#">Need help?</a></p>
+        
+        <table class="student-details">
+            <tr>
+                <td>NAME: KIZITO PETER</td>
+                <td>CLASS:S.5 </td>
+            </tr>
+            <tr>
+                <td>INDEX NUMBER: 1017202</td>
+                <td>Sciences BCM</td>
+            </tr>
+        </table>
+        
+        <table class="subject-table">
+            <tr>
+                <th>Subject</th>
+                <th>CA Score</th>
+                <th>Exam Score</th>
+                <th>Total Score</th>
+                <th>Grade</th>
+                <th>Remarks</th>
+                <th>Teacher Initials</th>
+            </tr>
+            <tr>
+                <td>General Paper</td>
+                <td>18</td>
+                <td>77</td>
+                <td>95</td>
+                <td class="highlight-A">A</td>
+                <td>Excellent</td>
+                <td>N.A.</td>
+            </tr>
+            <tr>
+                <td>Biology</td>
+                <td>12</td>
+                <td>83</td>
+                <td>95</td>
+                <td class="highlight-B">B</td>
+                <td>Very Good</td>
+                <td>N.A.</td>
+            </tr>
+            <tr>
+                <td>Chemistry</td>
+                <td>34</td>
+                <td>62</td>
+                <td>96</td>
+                <td>A</td>
+                <td>Excellent</td>
+                <td>N.A.</td>
+            </tr>
+            <tr>
+                <td>ICT</td>
+                <td>17</td>
+                <td>79</td>
+                <td>96</td>
+                <td class="highlight-B">B</td>
+                <td>Very Good</td>
+                <td>N.A.</td>
+            </tr>
+            <tr>
+                <td>Mathematics</td>
+                <td>23</td>
+                <td>76</td>
+                <td>99</td>
+                <td class="highlight-A">A</td>
+                <td>Excellent</td>
+                <td>N.A.</td>
+            </tr>
+        </table>
+        
+        <div class="grading-scale">
+            <h3>Grading Scale</h3>
+            <table class="scale-table">
+                <tr>
+                    <td>80-100: A (Excellent)</td>
+                    <td>70-79: B (Very Good)</td>
+                    <td>60-69: C (Good)</td>
+                    <td>50-59: D (Fair)</td>
+                    <td>0-49: F (Fail)</td>
+                </tr>
+            </table>
         </div>
-
+        
+        <table class="overall-performance">
+            <tr>
+                <td width="50%">Overall Average Score: 96.2</td>
+                <td width="50%">Overall Grade: A</td>
+            </tr>
+            <tr>
+                <td>Class Rank: 4th out of 60 students</td>
+                <td>Term: 2nd Term 2024/2025</td>
+            </tr>
+        </table>
+        
+        <div class="comments">
+            <p><strong>Class Teacher Comment:</strong></p>
+            <p>"Peter is showing excellent academic performance with consistent improvement across all subjects. He demonstrates strong analytical skills in Mathematics and Sciences. His participation in class discussions is commendable. Keep up the good work and focus on maintaining this high standard."</p>
+            <p>Please feel free to schedule a meeting if you have any concerns.</p>
+            <div class="signature-box">
+                Class Teacher Signature: _________________
+            </div>
+        </div>
+        
+        <div class="comments">
+            <p><strong>Principal's Comment:</strong></p>
+            <p>"Add in more effort Peter we can keep this up."</p>
+            <div class="signature-box">
+                Principal Signature: _________________
+            </div>
+        </div>
+        
         <div class="footer">
-            <p>Don't have an account? <a href="#">Create one</a></p>
+            <p>LIVING HOPE CHRISTIAN HIGH SCHOOL</p>
+            <p>22 AUG 2025</p>
         </div>
     </div>
 
+    <script>
+        document.getElementById('download-btn').addEventListener('click', function() {
+            const element = document.getElementById('report-card');
+            const options = {
+                margin: 10,
+                filename: 'Living_Hope_Report_Card.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            html2pdf().set(options).from(element).save();
+        });
+    </script>
 </body>
-</html>
+                    </html>
