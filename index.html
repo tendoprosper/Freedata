@@ -1,196 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elite Business Club</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #0b3d91, #0f7bbd);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .container {
-      background: rgba(0,0,0,0.75);
-      padding: 30px;
-      border-radius: 12px;
-      width: 400px;
-      text-align: center;
-    }
-    input, select {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 6px;
-    }
-    button {
-      width: 95%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 6px;
-      background: #f7b733;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    button:hover { background: #ffcc00; }
-    .msg { margin-top: 10px; font-size: 14px; color: #ffcc00; }
-    #dashboard { display: none; }
-    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    th, td { border: 1px solid #333; padding: 8px; text-align: center; }
-    th { background: #f7b733; color: black; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living Hope Christian High School - Report Card</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            width: 800px;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #1a3c6c;
+            padding-bottom: 15px;
+        }
+        
+        .school-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a3c6c;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .motto {
+            font-style: italic;
+            color: #555;
+            margin: 8px 0;
+        }
+        
+        .assessment-title {
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 15px 0;
+        }
+        
+        .student-details {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+        
+        .student-details td {
+            padding: 8px 5px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        
+        .subject-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        
+        .subject-table th, .subject-table td {
+            border: 1px solid #000;
+            padding: 8px 5px;
+            text-align: center;
+        }
+        
+        .subject-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        
+        .overall-performance {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+        
+        .overall-performance td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .comments {
+            margin: 25px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        
+        .signature-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .signature-box {
+            width: 45%;
+            border-top: 1px solid #000;
+            padding-top: 5px;
+            text-align: center;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .grading-scale {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        
+        .grading-scale h3 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .scale-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .scale-table td {
+            padding: 5px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .btn-container {
+            margin: 20px 0;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            background-color: #1a3c6c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0f2a4d;
+        }
+        
+        .highlight-A {
+            background-color: #d4edda;
+            font-weight: bold;
+        }
+        
+        .highlight-B {
+            background-color: #cce5ff;
+        }
+    </style>
 </head>
 <body>
-  <div class="container" id="authSection">
-    <h2>Elite Club Login</h2>
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="signup()">Sign Up</button>
-    <button onclick="login()">Login</button>
-    <p class="msg" id="msg"></p>
-  </div>
+    <div class="btn-container">
+        <button class="btn" id="download-btn">Download PDF Report Card</button>
+    </div>
 
-  <div class="container" id="dashboard">
-    <h2>Welcome, <span id="userEmail"></span></h2>
-    <table>
-      <thead>
-        <tr><th>Date</th><th>Amount</th></tr>
-      </thead>
-      <tbody id="savingsTable"></tbody>
-    </table>
-    <h3 id="totalSavings">Total: 0</h3>
+    <div class="container" id="report-card">
+        <div class="header">
+            <div class="school-name">LIVING HOPE CHRISTIAN HIGH SCHOOL</div>
+            <div class="motto">"GOD IS OUR HOPE FOR SUCCESS"</div>
+            <div class="assessment-title">End-Term Assessment</div>
+        </div>
+        
+        <table class="student-details">
+            <tr>
+                <td>NAME: KIZITO PETER</td>
+                <td>CLASS: S.5</td>
+            </tr>
+            <tr>
+                <td>INDEX NUMBER: 1017202</td>
+                <td>BCM</td>
+            </tr>
+        </table>
+        
+        <table class="subject-table">
+            <tr>
+                <th>Subject</th>
+                <th>CA Score</th>
+                <th>Exam Score</th>
+                <th>Total Score</th>
+                <th>Grade</th>
+                <th>Remarks</th>
+                <th>Teacher Initials</th>
+            </tr>
+            <tr>
+                <td>General Paper</td>
+                <td>18</td>
+                <td>77</td>
+                <td>95</td>
+                <td class="highlight-A">A</td>
+                <td>Excellent</td>
+                <td>N.A.</td>
+            </tr>
+            <tr>
+                <td>Biology</td>
+                <td>12</td>
+                <td>83</td>
+                <td>95</td>
+                <td class="highlight-B">B</td>
+                <td>Very Good</td>
+                <td>N.A.</td>
+            </tr>
+            <tr>
+                <td>Chemistry</td>
+                <td>34</td>
+                <td>62</td>
+                <td>96</td>
+                <td>A</td>
+                <td>Excellent</td>
+                <td>N.A.</td>
+            </tr>
+            <tr>
+                <td>ICT</td>
+                <td>17</td>
+                <td>79</td>
+                <td>96</td>
+                <td class="highlight-B">B</td>
+                <td>Very Good</td>
+                <td>N.A.</td>
+            </tr>
+            <tr>
+                <td>Mathematics</td>
+                <td>23</td>
+                <td>76</td>
+                <td>99</td>
+                <td class="highlight-A">A</td>
+                <td>Excellent</td>
+                <td>N.A.</td>
+            </tr>
+        </table>
+        
+        <div class="grading-scale">
+            <h3>Grading Scale</h3>
+            <table class="scale-table">
+                <tr>
+                    <td>80-100: A (Excellent)</td>
+                    <td>70-79: B (Very Good)</td>
+                    <td>60-69: C (Good)</td>
+                    <td>50-59: D (Fair)</td>
+                    <td>0-49: F (Fail)</td>
+                </tr>
+            </table>
+        </div>
+        
+        <table class="overall-performance">
+            <tr>
+                <td width="50%">Overall Average Score: 96.2</td>
+                <td width="50%">Overall Grade: A</td>
+            </tr>
+            <tr>
+                <td>Class Rank: 4th out of 60 students</td>
+                <td>Term: 2nd Term 2024/2025</td>
+            </tr>
+        </table>
+        
+        <div class="comments">
+            <p><strong>Class Teacher Comment:</strong></p>
+            <p>"Stephen is showing excellent academic performance with consistent improvement across all subjects. He demonstrates strong analytical skills in Mathematics and Sciences. His participation in class discussions is commendable. Keep up the good work and focus on maintaining this high standard."</p>
+            <p>Please feel free to schedule a meeting if you have any concerns.</p>
+            <div class="signature-box">
+                Class Teacher Signature: _________________
+            </div>
+        </div>
+        
+        <div class="comments">
+            <p><strong>Principal's Comment:</strong></p>
+            <p>"Please check the words together. Next or next week we need your knives outside!"</p>
+            <div class="signature-box">
+                Principal Signature: _________________
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>LIVING HOPE CHRISTIAN HIGH SCHOOL</p>
+            <p>22 AUG 2025</p>
+        </div>
+    </div>
 
-    <h3>Add New Saving</h3>
-    <input type="date" id="saveDate" />
-    <input type="number" id="saveAmount" placeholder="Amount" />
-    <button onclick="addSaving()">Add Saving</button>
-
-    <button onclick="logout()">Logout</button>
-    <p class="msg" id="dashboardMsg"></p>
-  </div>
-
-  <!-- Firebase SDKs -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } 
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, setDoc, doc, collection, addDoc, getDocs, query, where } 
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyB8y4y7bMIteIT029Vzna3rgzcDmSjUAwk",
-      authDomain: "elitesign-in.firebaseapp.com",
-      projectId: "elitesign-in",
-      storageBucket: "elitesign-in.firebasestorage.app",
-      messagingSenderId: "404062937521",
-      appId: "1:404062937521:web:4460e2ccc011dd6afa5d90",
-      measurementId: "G-7V5CND9FG4"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
-    const authSection = document.getElementById("authSection");
-    const dashboard = document.getElementById("dashboard");
-    const userEmailSpan = document.getElementById("userEmail");
-    const savingsTable = document.getElementById("savingsTable");
-    const totalSavingsEl = document.getElementById("totalSavings");
-    const msgEl = document.getElementById("msg");
-    const dashboardMsgEl = document.getElementById("dashboardMsg");
-
-    // Sign Up
-    async function signup() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        // Create user document
-        await setDoc(doc(db, "users", user.uid), { email: email });
-        msgEl.innerText = "✅ Sign up successful!";
-      } catch (error) {
-        msgEl.innerText = "❌ " + error.message;
-      }
-    }
-
-    // Login
-    async function login() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      try {
-        await signInWithEmailAndPassword(auth, email, password);
-      } catch (error) {
-        msgEl.innerText = "❌ " + error.message;
-      }
-    }
-
-    // Logout
-    async function logout() {
-      await signOut(auth);
-      dashboard.style.display = "none";
-      authSection.style.display = "block";
-      msgEl.innerText = "Logged out!";
-      dashboardMsgEl.innerText = "";
-    }
-
-    // Load user savings
-    async function loadSavings(uid) {
-      savingsTable.innerHTML = "";
-      let total = 0;
-      const q = query(collection(db, "savings"), where("userId", "==", uid));
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach(docSnap => {
-        const data = docSnap.data();
-        savingsTable.innerHTML += `<tr><td>${data.date}</td><td>${data.amount}</td></tr>`;
-        total += data.amount;
-      });
-      totalSavingsEl.innerText = "Total: " + total;
-    }
-
-    // Add new saving
-    async function addSaving() {
-      const date = document.getElementById("saveDate").value;
-      const amount = Number(document.getElementById("saveAmount").value);
-      const user = auth.currentUser;
-      if (!date || !amount || !user) return dashboardMsgEl.innerText = "❌ Enter date and amount";
-      await addDoc(collection(db, "savings"), {
-        userId: user.uid,
-        date: date,
-        amount: amount
-      });
-      dashboardMsgEl.innerText = "✅ Saving added!";
-      loadSavings(user.uid);
-      document.getElementById("saveDate").value = "";
-      document.getElementById("saveAmount").value = "";
-    }
-
-    // Auth state observer
-    onAuthStateChanged(auth, user => {
-      if(user){
-        authSection.style.display = "none";
-        dashboard.style.display = "block";
-        userEmailSpan.innerText = user.email;
-        loadSavings(user.uid);
-      } else {
-        authSection.style.display = "block";
-        dashboard.style.display = "none";
-      }
-    });
-
-    window.signup = signup;
-    window.login = login;
-    window.logout = logout;
-    window.addSaving = addSaving;
-  </script>
+    <script>
+        document.getElementById('download-btn').addEventListener('click', function() {
+            const element = document.getElementById('report-card');
+            const options = {
+                margin: 10,
+                filename: 'Living_Hope_Report_Card.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            html2pdf().set(options).from(element).save();
+        });
+    </script>
 </body>
-</html>
+  </html>
