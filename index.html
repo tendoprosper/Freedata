@@ -3,200 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AGRICOM | Buy Fresh</title>
+<title>AGRICOM | Agriculture Platform</title>
+
 <style>
 /* ===== RESET ===== */
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",sans-serif}
-
-/* ===== BACKGROUND ===== */
-body{
-color:#fff;
-background:linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
-url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6");
-background-size:cover;background-attachment:fixed;background-position:center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
 }
 
-/* ===== NAVBAR ===== */
-nav{
-background:rgba(0,0,0,.7);
-backdrop-filter:blur(14px);
-padding:18px 8%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:sticky;
-top:0;
-z-index:100;
-border-bottom:2px solid #2ecc71;
+/* ===== FULL WEBSITE BACKGROUND ===== */
+body {
+    min-height: 100vh;
+    color: #fff;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("green.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
-nav h1{color:#2ecc71;letter-spacing:4px;font-size:26px}
-nav ul{list-style:none;display:flex;gap:25px}
-nav ul a{color:#fff;text-decoration:none;position:relative;padding-bottom:5px}
-nav ul a:hover{color:#2ecc71}
 
-/* ===== HEADER ===== */
-.header{padding:40px 8%;text-align:center}
-.header h2{color:#2ecc71;margin-bottom:10px}
-.header p{opacity:.8}
+/* ===== NAVBAR (UNCHANGED STYLE) ===== */
+nav {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
-/* ===== FILTERS ===== */
-.filters{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-bottom:25px}
-.filters button{padding:10px 20px;border-radius:20px;border:1px solid #2ecc71;background:transparent;color:#2ecc71;cursor:pointer}
-.filters button:hover{background:#2ecc71;color:#000}
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-/* ===== SEARCH ===== */
-.search{max-width:450px;margin:0 auto 30px;display:flex}
-.search input{flex:1;padding:12px;border:none;border-radius:25px 0 0 25px;outline:none}
-.search button{padding:12px 25px;border:none;background:#2ecc71;font-weight:bold;border-radius:0 25px 25px 0;cursor:pointer}
+    position: sticky;
+    top: 0;
+    z-index: 100;
 
-/* ===== PRODUCTS GRID ===== */
-.products{padding:0 8% 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:25px}
-.card{background:rgba(255,255,255,.12);backdrop-filter:blur(12px);border-radius:18px;overflow:hidden;transition:.3s}
-.card:hover{transform:translateY(-6px)}
-.card img{width:100%;height:160px;object-fit:cover}
-.info{padding:15px}
-.info h3{color:#2ecc71;margin-bottom:5px}
-.info small{opacity:.8}
-.info button{margin-top:10px;width:100%;padding:10px;border:none;border-radius:20px;background:#2ecc71;font-weight:bold;cursor:pointer}
-.info button:hover{background:#27ae60}
+    border-bottom: 2px solid #2ecc71;
+    box-shadow: 0 5px 25px rgba(46, 204, 113, 0.15);
+}
 
-/* ===== MODAL ===== */
-.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:200}
-.modal-content{background:#111;padding:25px;border-radius:15px;max-width:400px;text-align:center}
-.modal-content img{width:100%;border-radius:10px}
-.close{cursor:pointer;color:#2ecc71;font-weight:bold;font-size:16px}
+nav h1 {
+    color: #2ecc71;
+    font-size: 28px;
+    letter-spacing: 4px;
+}
 
-/* ===== FARMER PROFILES ===== */
-.farmers{padding:40px 8%;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
-.farmer-card{background:rgba(255,255,255,.12);backdrop-filter:blur(12px);padding:15px;border-radius:15px;text-align:center}
-.farmer-card img{width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:10px}
-.farmer-card h4{color:#2ecc71;margin-bottom:5px}
-.farmer-card p{font-size:14px;opacity:.8;margin-bottom:8px}
+/* NAV LINKS */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 5px;
+    transition: 0.3s;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: #2ecc71;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #2ecc71;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* ===== MAIN CONTENT ===== */
+.hero {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 8%;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 900px;
+    animation: fadeUp 1.2s ease;
+}
+
+.hero-content h1 {
+    font-size: 64px;
+    color: #2ecc71;
+    letter-spacing: 6px;
+}
+
+.hero-content h2 {
+    font-weight: 300;
+    margin: 20px 0 35px;
+    font-size: 20px;
+}
+
+/* ===== BUTTONS ===== */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.buttons a {
+    padding: 15px 38px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.shop {
+    background: #2ecc71;
+    color: #000;
+}
+
+.sell {
+    border: 2px solid #2ecc71;
+    color: #2ecc71;
+}
+
+.shop:hover {
+    background: #27ae60;
+    transform: scale(1.05);
+}
+
+.sell:hover {
+    background: #2ecc71;
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}
 </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
+<!-- ===== NAVBAR ===== -->
 <nav>
-<h1>AGRICOM</h1>
-<ul>
-<li><a href="green.html">Home</a></li>
-<li><a href="cart.html">Cart 🛒</a></li>
-<li><a href="#farmers-section">Farmers</a></li>
-</ul>
+    <h1>AGRICOM</h1>
+    <ul>
+        <li><a href="sell.html">Sell Fresh</a></li>
+        <li><a href="buy.html">Buy Fresh</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="login.html">Sign Up / Login</a></li>
+    </ul>
 </nav>
 
-<!-- HEADER -->
-<div class="header">
-<h2>Buy Fresh Products</h2>
-<p>Search, filter, and order quality agricultural products directly from farmers</p>
-</div>
+<!-- ===== MAIN SECTION ===== -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>AGRICOM</h1>
+        <h2>Connect, discover and order quality in less time</h2>
 
-<!-- FILTERS -->
-<div class="filters">
-<button onclick="filterCategory('all')">All</button>
-<button onclick="filterCategory('fruit')">Fruits</button>
-<button onclick="filterCategory('veg')">Vegetables</button>
-<button onclick="filterCategory('grain')">Grains</button>
-</div>
-
-<!-- SEARCH -->
-<div class="search">
-<input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
-<button onclick="searchProducts()">Search</button>
-</div>
-
-<!-- PRODUCTS GRID -->
-<section class="products" id="products"></section>
-
-<!-- PRODUCT MODAL -->
-<div class="modal" id="modal">
-<div class="modal-content">
-<span class="close" onclick="closeModal()">✖ Close</span>
-<img id="modalImg">
-<h3 id="modalName"></h3>
-<p id="modalPrice"></p>
-<button onclick="addToCartFromModal()">Add to Cart</button>
-</div>
-</div>
-
-<!-- FARMER PROFILES -->
-<section class="farmers" id="farmers-section">
-<h2 style="grid-column:1/-1;color:#2ecc71;margin-bottom:15px;text-align:center;">Our Farmers</h2>
+        <div class="buttons">
+            <a href="buy.html" class="shop">Shop Now</a>
+            <a href="sell.html" class="sell">Sell Now</a>
+        </div>
+    </div>
 </section>
 
-<script>
-// PRODUCTS
-const productData=[
-{name:"Tomatoes",price:3000,cat:"veg",img:"https://images.unsplash.com/photo-1567306226416-28f0efdc88ce",farmer:"John's Farm"},
-{name:"Bananas",price:2500,cat:"fruit",img:"https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2",farmer:"Lilly's Orchard"},
-{name:"Maize",price:1800,cat:"grain",img:"https://images.unsplash.com/photo-1582515073490-39981397c445",farmer:"Green Fields"},
-{name:"Avocado",price:1500,cat:"fruit",img:"https://images.unsplash.com/photo-1518977676601-b53f82aba655",farmer:"Sunny Avocados"}
-];
-let currentProduct=null;
-
-// DISPLAY PRODUCTS
-function displayProducts(list){
-document.getElementById("products").innerHTML=list.map((p,i)=>`
-<div class="card">
-<img src="${p.img}" onclick="openModal(${i})">
-<div class="info">
-<h3>${p.name}</h3>
-<small>UGX ${p.price}</small><br>
-<button onclick="addToCart(${i})">Add to Cart</button>
-</div>
-</div>`).join("");
-}
-displayProducts(productData);
-
-// CATEGORY FILTER
-function filterCategory(cat){
-displayProducts(cat==="all"?productData:productData.filter(p=>p.cat===cat));
-}
-
-// SEARCH
-function searchProducts(){
-let v=document.getElementById("searchInput").value.toLowerCase();
-displayProducts(productData.filter(p=>p.name.toLowerCase().includes(v)));
-}
-
-// MODAL
-function openModal(i){
-currentProduct=i;
-const m=document.getElementById("modal");
-m.style.display="flex";
-document.getElementById("modalImg").src=productData[i].img;
-document.getElementById("modalName").textContent=productData[i].name+" ("+productData[i].farmer+")";
-document.getElementById("modalPrice").textContent="UGX "+productData[i].price;
-}
-function closeModal(){document.getElementById("modal").style.display="none"}
-
-// ADD TO CART
-function addToCart(i){
-let cart=JSON.parse(localStorage.getItem("cart"))||[];
-cart.push({...productData[i],quantity:1}); // quantity will be set in cart page
-localStorage.setItem("cart",JSON.stringify(cart));
-alert("Added to cart");
-}
-function addToCartFromModal(){
-let cart=JSON.parse(localStorage.getItem("cart"))||[];
-cart.push({...productData[currentProduct],quantity:1});
-localStorage.setItem("cart",JSON.stringify(cart));
-closeModal();
-}
-
-// FARMER PROFILES
-const farmers=[{name:"John Doe",location:"Kampala",img:"https://images.unsplash.com/photo-1572377539782-230ae9f12912",contact:"+256700000001"},{name:"Lilly Smith",location:"Entebbe",img:"https://images.unsplash.com/photo-1587300003388-59208cc962cb",contact:"+256700000002"}];
-const farmerSec=document.getElementById("farmers-section");
-farmers.forEach(f=>{
-farmerSec.innerHTML+=`
-<div class="farmer-card">
-<img src="${f.img}">
-<h4>${f.name}</h4>
-<p>${f.location}</p>
-<p>Contact: ${f.contact}</p>
-</div>`;
-});
-</script>
 </body>
 </html>
